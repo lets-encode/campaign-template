@@ -35,7 +35,7 @@ tracking/                    # five tables keyed by (task_id, subtask_id) —
                              # generated at init & maintained by the automation
 .github/workflows/
   caller.yml                 # triggers only — calls the campaign workflow in
-                             # lets-encode/instigation, which runs the automation
+                             # lets-encode/lets-encode, which runs the automation
                              # named in config.yaml
 ```
 
@@ -51,7 +51,7 @@ Each facsimile piece opens with a measure-correction pre-task; its per-page
 encoding tasks depend on it via the `depends_on` column, so they unlock once
 the pre-task completes. From there, volunteers claim and submit work as pull
 requests; on each one `caller.yml` calls the campaign workflow in
-`lets-encode/instigation`, which checks out the central automation repo named
+`lets-encode/lets-encode`, which checks out the central automation repo named
 in `config.yaml` and runs it, and that coordinator validates the contribution,
 mutates the tables, and closes or merges the PR. An hourly cron run of the same
 workflow reaps stale locks.

@@ -5,6 +5,7 @@ parentheses.
 
 ## Unreleased
 
+- References follow the repository rename of instigation to lets-encode.
 - Unused `templates/score.template.mei` removed.
 - README documents which template files a new campaign replaces or drops.
 - Caller: reduced to triggers and a call to the campaign workflow in instigation.

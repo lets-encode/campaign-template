@@ -1,6 +1,6 @@
 name: Campaign automation
 
-# Forwards every event to the campaign workflow in lets-encode/instigation,
+# Forwards every event to the campaign workflow in lets-encode/lets-encode,
 # which reads the `automation:` block of config.yaml and runs the coordinator.
 on:
   pull_request_target:
@@ -19,4 +19,4 @@ permissions:
 
 jobs:
   run:
-    uses: lets-encode/instigation/.github/workflows/campaign.yml@main
+    uses: lets-encode/lets-encode/.github/workflows/campaign.yml@main
