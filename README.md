@@ -14,7 +14,9 @@ the campaign automation.
 ## Layout
 
 ```
-config.example.yaml          # campaign config TEMPLATE (schema v3) — documented inline
+README.md                    # this file; replaced at init by the campaign's own README
+CHANGELOG.md                 # changes to this template; removed at init
+config.example.yaml          # campaign config TEMPLATE (schema v3) — documented inline; removed at init
 config.yaml                  # written at instigation by the GUI (not in the template)
 sources/
   img/                       # the source's committed page images (facsimile campaigns)
@@ -24,8 +26,6 @@ sources/
                              #   corrected boxes are the zones in score.mei
   <piece-id>/omr.xml         # OMR-prepared pieces: every staff's transcription and label,
                              #   written with the score setup; the page drafts are made from it
-templates/
-  score.template.mei         # barebones MEI: 1 measure, 1 note, header placeholders
 tracking/                    # five tables keyed by (task_id, subtask_id) —
   task.csv                   #   task/subtask definitions (fragment, locator, gates, depends_on)
   state.csv                  #   live status + validation cells
@@ -34,25 +34,27 @@ tracking/                    # five tables keyed by (task_id, subtask_id) —
   comment.csv                #   review comments on tasks (threaded, resolvable)
                              # generated at init & maintained by the automation
 .github/workflows/
-  caller.yml                 # the ONE task-agnostic caller — forwards every event
-                             # to the central automation named in config.yaml
+  caller.yml                 # triggers only — calls the campaign workflow in
+                             # lets-encode/instigation, which runs the automation
+                             # named in config.yaml
 ```
 
 ## Lifecycle in one paragraph
 
 The instigation GUI generates a campaign repo from this template, then commits —
 in one go — a filled-in `config.yaml` (shaped like `config.example.yaml`), one
-`sources/<piece-id>/score.mei` per piece stamped from
-`templates/score.template.mei` (header filled from the config), and the five
-tracking tables (tasks `encoding_required`, their validation subtasks
-`pending`, empty lock, history and comment tables). Each facsimile piece opens
-with a measure-correction pre-task; its per-page encoding tasks depend on it
-via the `depends_on` column, so they unlock once the pre-task completes. From
-there, volunteers claim and submit work as pull requests; on each one
-`caller.yml` checks out the central automation repo named in `config.yaml` and
-runs it, and that coordinator validates the contribution, mutates the tables,
-and closes or merges the PR. An hourly cron run of the same workflow reaps
-stale locks.
+`sources/<piece-id>/score.mei` per piece (header filled from the config), the
+five tracking tables (tasks `encoding_required`, their validation subtasks
+`pending`, empty lock, history and comment tables) and the campaign's own
+README, and removes `CHANGELOG.md` and `config.example.yaml`.
+Each facsimile piece opens with a measure-correction pre-task; its per-page
+encoding tasks depend on it via the `depends_on` column, so they unlock once
+the pre-task completes. From there, volunteers claim and submit work as pull
+requests; on each one `caller.yml` calls the campaign workflow in
+`lets-encode/instigation`, which checks out the central automation repo named
+in `config.yaml` and runs it, and that coordinator validates the contribution,
+mutates the tables, and closes or merges the PR. An hourly cron run of the same
+workflow reaps stale locks.
 
 ## File formats
 

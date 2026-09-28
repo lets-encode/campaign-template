@@ -23,9 +23,9 @@ campaign:
   license: "CC-BY-4.0"                        # (→ MEI header / availability)
 
 # --- Automation --------------------------------------------------------------
-# Where the campaign's coordination logic lives. The generic caller workflow
-# (.github/workflows/caller.yml) reads this block from the BASE branch on every
-# run, checks out that repository at `ref`, and runs `path`. Upgrading a live
+# Where the campaign's coordination logic lives. The campaign workflow that
+# .github/workflows/caller.yml calls reads this block from the BASE branch on
+# every run, checks out that repository at `ref`, and runs `path`. Upgrading a live
 # campaign is a one-line edit of `ref`.
 automation:
   central_repository: "lets-encode/instigation" # owner/repo of the central automation code
