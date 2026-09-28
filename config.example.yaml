@@ -2,7 +2,7 @@
 # Let's Encode! — campaign configuration  (schema v3)
 # =============================================================================
 # This file documents the shape of config.yaml, which the instigation platform
-# writes at campaign creation (see instigation/src/lib/campaign-init.ts,
+# writes at campaign creation (see lets-encode/src/lib/campaign-init.ts,
 # configToYaml). A campaign describes ONE physical source holding N pieces
 # (works); each piece is one MEI file at its own path and one group of tasks.
 # -----------------------------------------------------------------------------

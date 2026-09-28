@@ -1,10 +1,11 @@
 # Changelog
 
-All notable changes to the user-repo-template. Commit hashes are given in
+All notable changes to the campaign-template. Commit hashes are given in
 parentheses.
 
 ## Unreleased
 
+- config.example.yaml and the changelog name the renamed repositories.
 - References follow the repository rename of instigation to lets-encode.
 - Unused `templates/score.template.mei` removed.
 - README documents which template files a new campaign replaces or drops.
