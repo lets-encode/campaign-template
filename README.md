@@ -22,8 +22,11 @@ sources/
   img/                       # the source's committed page images (facsimile campaigns)
   <piece-id>/score.mei       # one MEI per piece, written at init (not in the template)
   <piece-id>/layout.json     # OMR-prepared pieces: the layout model's raw output per page,
-                             #   written with the layout correction; NOT corrected — the
-                             #   corrected boxes are the zones in score.mei
+                             #   written with the layout correction; NOT corrected
+  <piece-id>/layout-corrected.json
+                             # OMR-prepared pieces: the corrected measure, staff and
+                             #   grand-staff boxes, written with the layout correction;
+                             #   score.mei holds the measure zones grown by a margin
   <piece-id>/omr.xml         # OMR-prepared pieces: every staff's transcription and label,
                              #   written with the score setup; the page drafts are made from it
 tracking/                    # five tables keyed by (task_id, subtask_id) —

@@ -5,6 +5,7 @@ parentheses.
 
 ## Unreleased
 
+- README documents `sources/<piece-id>/layout-corrected.json`, the corrected layout boxes of an OMR piece.
 - config.example.yaml and the changelog name the renamed repositories.
 - References follow the repository rename of instigation to lets-encode.
 - Unused `templates/score.template.mei` removed.
