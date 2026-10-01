@@ -3,16 +3,25 @@
 All notable changes to the campaign-template. Commit hashes are given in
 parentheses.
 
-## Unreleased
+## 2026-09-29
 
 - README documents `sources/<piece-id>/layout-corrected.json`, the corrected layout boxes of an OMR piece.
+
+## 2026-09-28
+
 - config.example.yaml and the changelog name the renamed repositories.
 - References follow the repository rename of instigation to lets-encode.
 - Unused `templates/score.template.mei` removed.
 - README documents which template files a new campaign replaces or drops.
 - Caller: reduced to triggers and a call to the campaign workflow in instigation.
 - Caller: runs for pull requests that change no file, so an unchanged encoding can be submitted.
+
+## 2026-09-25
+
 - README documents `sources/<piece-id>/omr.xml`, the recognition record an OMR piece's score setup writes.
+
+## 2026-09-23
+
 - history.csv gains a `pr` column naming the pull request each row decides.
 
 ## 0.4.5 – 2026-09-21
