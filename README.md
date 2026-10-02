@@ -34,7 +34,7 @@ tracking/                    # five tables keyed by (task_id, subtask_id) —
   state.csv                  #   live status + validation cells
   lock.csv                   #   active claims
   history.csv                #   append-only log of every action, incl. rejects
-  comment.csv                #   review comments on tasks (threaded, resolvable)
+  comment.csv                #   comments on tasks and the campaign (threaded, resolvable)
                              # generated at init & maintained by the automation
 .github/workflows/
   caller.yml                 # triggers only — calls the campaign workflow in
