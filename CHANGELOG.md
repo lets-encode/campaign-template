@@ -5,6 +5,7 @@ parentheses.
 
 ## 2026-10-05
 
+- The `automation.ref` comment in config.example.yaml names the instance branch.
 - `tracking/lock.csv` gains an `expires` column.
 
 ## 2026-10-02
