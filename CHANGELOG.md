@@ -3,6 +3,10 @@
 All notable changes to the campaign-template. Commit hashes are given in
 parentheses.
 
+## 2026-10-05
+
+- `tracking/lock.csv` gains an `expires` column.
+
 ## 2026-10-02
 
 - `tracking/comment.csv` gains a `fragment` column for campaign comments anchored to a measure.
