@@ -3,6 +3,10 @@
 All notable changes to the campaign-template. Commit hashes are given in
 parentheses.
 
+## 2026-10-06
+
+- config.example.yaml sets claims to last 24 hours.
+
 ## 2026-10-05
 
 - The `automation.ref` comment in config.example.yaml names the instance branch.
