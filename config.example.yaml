@@ -98,3 +98,4 @@ validation:
 # this many minutes after it was accepted; the task is then open again.
 locking:
   stale_after_minutes: 1440
+  max_claims_per_person: 10                   # claims of any kind one person may hold at once

@@ -3,6 +3,10 @@
 All notable changes to the campaign-template. Commit hashes are given in
 parentheses.
 
+## 2026-10-20
+
+- config.example.yaml caps the claims one person may hold at once at ten.
+
 ## 2026-10-06
 
 - config.example.yaml sets claims to last 24 hours.
