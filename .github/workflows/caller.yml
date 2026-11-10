@@ -10,7 +10,7 @@ on:
     types: [opened, reopened, synchronize, ready_for_review]
   schedule:
     - cron: '0 * * * *' # fallback cleanup; claims also reap expired locks lazily
-  workflow_dispatch: {} # manual reaper run (e.g. from the campaign console)
+  workflow_dispatch: {} # manual reaper run (e.g. from the app)
 
 # A called workflow can use at most the permissions its caller grants.
 permissions:

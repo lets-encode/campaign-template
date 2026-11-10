@@ -19,7 +19,7 @@ campaign:
   description: "One or two sentences describing the campaign."
   instigator: "0"                             # organiser's numeric GitHub account id (login resolved for display)
   repo_id: 0                                  # this repo's numeric GitHub id — the canonical, rename-proof reference
-  language: "en"                              # BCP-47 code; default UI language
+  language: "en"                              # BCP-47 code; recorded only, not read
   license: "CC-BY-4.0"                        # (→ MEI header / availability)
 
 # --- Automation --------------------------------------------------------------

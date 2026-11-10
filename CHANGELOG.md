@@ -6,6 +6,7 @@ parentheses.
 ## 2026-11-10
 
 - The README and config.example.yaml describe the current pre-tasks and settings.
+- The README says that GitHub may delay the hourly run by hours.
 
 ## 2026-10-20
 

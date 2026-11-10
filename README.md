@@ -59,8 +59,8 @@ From there, volunteers claim and submit work as pull requests; on each one
 `caller.yml` calls the campaign workflow in `lets-encode/lets-encode`, which
 checks out the central automation repo named in `config.yaml` and runs it,
 and that coordinator validates the contribution, mutates the tables with its
-own commit, and closes the PR. An hourly cron run of the same workflow reaps
-stale locks.
+own commit, and closes the PR. A run of the same workflow scheduled hourly
+reaps stale locks; GitHub may delay a scheduled run by hours.
 
 ## File formats
 
