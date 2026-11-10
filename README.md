@@ -6,7 +6,7 @@ campaign: it holds the score sources, the campaign configuration, five
 machine-maintained tracking tables, and one generic caller workflow that runs
 the campaign automation.
 
-> You normally don't touch these files by hand. The instigation platform fills
+> You normally don't touch these files by hand. The Let's Encode app fills
 > in the configuration at campaign start, and the volunteer client claims and
 > submits work through pull requests. The files are kept human-readable so they
 > review cleanly in pull-request diffs.
@@ -17,7 +17,7 @@ the campaign automation.
 README.md                    # this file; replaced at init by the campaign's own README
 CHANGELOG.md                 # changes to this template; removed at init
 config.example.yaml          # campaign config TEMPLATE (schema v3) — documented inline; removed at init
-config.yaml                  # written at instigation by the GUI (not in the template)
+config.yaml                  # written at campaign creation by the app (not in the template)
 sources/
   img/                       # the source's committed page images (facsimile campaigns)
   <piece-id>/score.mei       # one MEI per piece, written at init (not in the template)
@@ -44,24 +44,28 @@ tracking/                    # five tables keyed by (task_id, subtask_id) —
 
 ## Lifecycle in one paragraph
 
-The instigation GUI generates a campaign repo from this template, then commits —
+The Let's Encode app generates a campaign repo from this template, then commits —
 in one go — a filled-in `config.yaml` (shaped like `config.example.yaml`), one
 `sources/<piece-id>/score.mei` per piece (header filled from the config), the
 five tracking tables (tasks `encoding_required`, their validation subtasks
 `pending`, empty lock, history and comment tables) and the campaign's own
 README, and removes `CHANGELOG.md` and `config.example.yaml`.
-Each facsimile piece opens with a measure-correction pre-task; its per-page
-encoding tasks depend on it via the `depends_on` column, so they unlock once
-the pre-task completes. From there, volunteers claim and submit work as pull
-requests; on each one `caller.yml` calls the campaign workflow in
-`lets-encode/lets-encode`, which checks out the central automation repo named
-in `config.yaml` and runs it, and that coordinator validates the contribution,
-mutates the tables, and closes or merges the PR. An hourly cron run of the same
-workflow reaps stale locks.
+Each facsimile piece opens with pre-tasks chained by the `depends_on` column:
+a measure correction (a layout correction for the OMR preparations), an
+alignment when the piece starts from an uploaded encoding, then a score setup,
+which the `omr-instruments` preparation leaves out. Its per-page encoding tasks
+depend on the last pre-task, so they unlock once the pre-tasks complete.
+From there, volunteers claim and submit work as pull requests; on each one
+`caller.yml` calls the campaign workflow in `lets-encode/lets-encode`, which
+checks out the central automation repo named in `config.yaml` and runs it,
+and that coordinator validates the contribution, mutates the tables with its
+own commit, and closes the PR. An hourly cron run of the same workflow reaps
+stale locks.
 
 ## File formats
 
 `config.yaml` is YAML; the tracking tables are CSV (chosen for clean,
 cell-level pull-request diffs and trivial machine parsing). The schema, the
-column meanings, and the validation-cell encoding are specified in `DESIGN.md`
-in the `instigation` repo (the single design + status document for the project).
+column meanings, and the validation-cell encoding are defined in
+`src/lib/campaign-init.ts` and `src/lib/campaign-tables.ts` of
+`lets-encode/lets-encode`.

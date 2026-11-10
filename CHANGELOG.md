@@ -3,6 +3,10 @@
 All notable changes to the campaign-template. Commit hashes are given in
 parentheses.
 
+## 2026-11-10
+
+- The README and config.example.yaml describe the current pre-tasks and settings.
+
 ## 2026-10-20
 
 - config.example.yaml caps the claims one person may hold at once at ten.

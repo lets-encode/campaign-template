@@ -1,7 +1,7 @@
 # =============================================================================
 # Let's Encode! — campaign configuration  (schema v3)
 # =============================================================================
-# This file documents the shape of config.yaml, which the instigation platform
+# This file documents the shape of config.yaml, which the Let's Encode app
 # writes at campaign creation (see lets-encode/src/lib/campaign-init.ts,
 # configToYaml). A campaign describes ONE physical source holding N pieces
 # (works); each piece is one MEI file at its own path and one group of tasks.
@@ -63,7 +63,9 @@ source:
 pieces:
   - id: "piece-1"
     kind: "facsimile"
+    # preparation: "measure-detection"        # facsimile only: 'measure-detection' | 'omr' | 'omr-instruments'; unset = 'measure-detection'
     path: "sources/piece-1/score.mei"
+    # encoding: "sources/piece-1/upload.mei"  # facsimile only, optional: the uploaded encoding the piece starts from
     zones:
       - { surface: 1, ulx: 0, uly: 0, lrx: 2000, lry: 1400 }
       - { surface: 2, ulx: 0, uly: 0, lrx: 2000, lry: 1400 }
@@ -73,8 +75,11 @@ pieces:
 
 # --- Fragmentation -----------------------------------------------------------
 # How the campaign is divided into tasks: one group of tasks per piece. A
-# facsimile piece opens with a measure-correction pre-task and gets one
-# encoding task per covered page, each depending on the pre-task; an encoded
+# facsimile piece opens with a measure-correction pre-task (a layout
+# correction for the OMR preparations), an alignment pre-task when `encoding` is set, and a
+# score-setup pre-task (none for 'omr-instruments'), each depending on the one
+# before, and gets one encoding task per covered page, each depending on the
+# last pre-task; an encoded
 # piece gets one whole-file task; a physical-only piece gets per-page tasks
 # when `pages` is set, otherwise one whole-file task. Only 'by-piece' is
 # implemented.
